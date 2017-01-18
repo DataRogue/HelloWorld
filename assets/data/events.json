@@ -1,0 +1,129 @@
+{
+    "banditEncounter":{
+        "title": "The Overturned Cart",
+        "description": "As you come over the hill in the distance you see an overturned cart. Several armed men are rummaging through it, and the donkey pulling is slumped over on the ground throat slit. Some distance down from the cart a cloaked figure lays face down in the ground with an arrow in its back.",
+        "choices": [
+            {
+                "label": "Charge the bandits",
+                "popover": "",
+                "checks": [
+                    {
+                        "type": "mounted",
+                        "difficulty": 1,
+                        "sequence": false, 
+                        "terminating": false, 
+                        "success": {
+                            "description": "The enemy has no time to arm themselves as your charge through their ranks with your steed.",
+                            "encounterModifier": ["ENEMY_UNARMED", "CLOSE_START"]
+                        },
+                        "failure": {
+                            "description": "The enemy sees you running on foot, and has plenty of time to draw their weapons."
+                        }
+                    },
+                    {
+                        "type": "ferocious",
+                        "difficulty": 5,
+                        "sequence": false, 
+                        "terminating": false, 
+                        "success": {
+                            "description": "As you close in the resounding roar of your battle-cry shakes the composure of the enemy, allowing you to slay several before the rest rally.",
+                            "encounterModifier": ["ENEMY_KILLED"]
+                        },
+                        "failure": {
+                            "description": "The enemy meets your gaze and steel themselves to meet you on the field of combat.",
+                            "initiateCombat": 1
+                        }
+                    },
+                    {
+                        "type": "menacing",
+                        "difficulty": 10,
+                        "sequence": true, 
+                        "terminating": false, 
+                        "success": {
+                            "description": "Your presence fills the enemy with dread and they lose the will to fight. They drop what they were holding and flee in terror.",
+                            "encounterModifier": ["ENEMY_FLEE", "EXTRA_LOOT"]
+                        },
+                        "failure": {
+                            "description": "The enemy meets your gaze and steel themselves to meet you on the field of combat.",
+                            "initiateCombat": 1
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Sneak up on the bandits",
+                "popover": "",
+                "checks":[
+                    {
+                        "type": "stealth",
+                        "difficulty": 5,
+                        "sequence": false, 
+                        "terminating": false, 
+                        "success": {
+                            "description": "You have managed to get close to the enemy without being detected.",
+                            "encounterModifier": ["CLOSE_START","ENEMY_UNARMED"]
+                        },
+                        "failure": {
+                            "description": "The enemy manages to spot you as you try to sneak up on them.",
+                            "initiateCombat": 1
+                        }
+                    },
+                    {
+                        "type": "guile",
+                        "difficulty": 5,
+                        "sequence": true, 
+                        "terminating": false, 
+                        "success": {
+                            "description": "You are able to pick off several isolated bandits, without alerting the rest.",
+                            "encounterModifier": ["ENEMY_KILLED"]
+                        },
+                        "failure": {
+                            "description": "You are unable to find any isolated bandits."
+                        }
+                    },
+                    {
+                        "type": "assassin",
+                        "difficulty": 1,
+                        "sequence": false,
+                        "terminating": false,
+                        "success": {
+                            "description": "You have identified the bandit leader from a distance."
+                        },
+                        "failure": {
+                            "description": "You are unable to identify the leader.",
+                            "initiateCombat": 1
+                        }
+                    },
+                    {
+                        "type": "rangedAttack",
+                        "difficulty": 1,
+                        "sequence": true, 
+                        "terminating": false, 
+                        "success": {
+                            "description": "You have a ranged weapon."
+                        },
+                        "failure": {
+                            "description": "Without a ranged weapon you are forced to engage at close range.",
+                            "initiateCombat": 1
+                        }
+                    },
+                    {
+                        "type": "rangedSkill",
+                        "difficulty": 1,
+                        "sequence": true,
+                        "terminating": false,
+                        "success": {
+                            "description": "You have managed to kill the bandit's leader with a ranged attack, they flee.",
+                            "encounterModifier": ["BOSS_KILLED", "ENEMY_FLEE", "EXTRA_LOOT"]
+                        },
+                        "failure": {
+                            "description": "You wound the bandit's leader.",
+                            "encounterModifier": ["BOSS_DAMAGED"],
+                            "initiateCombat": 1
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

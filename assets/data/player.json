@@ -1,0 +1,33 @@
+{
+    "name":"Nameless",
+    "body": {
+        "head": {
+            "resistance": 1.0
+            },
+        "torso": {
+            "resistance": 1.0
+            },
+        "lArm": {
+            "resistance": 1.0
+            },
+        "rArm": {
+            "resistance": 1.0
+            },
+        "lLeg": {
+            "resistance": 1.0
+            },
+        "rLeg": {
+            "resistance": 1.0
+            }
+        },
+    "stats": {
+        "accuracy": 70.0,
+        "might": 1.0,
+        "baseResistance": 1.0
+        },
+    "attributes": {
+        "ferocity": 4,
+        "guile": 1,
+        "wisdom": 1
+    }
+}
